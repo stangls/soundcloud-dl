@@ -203,7 +203,8 @@ function downallsongs() { # Parse json for all user's songs
     echo ""
 
     offset=$default_offset
-    artistpage=$(CURL "https://api.sndcdn.com/e1/users/$artistID/sounds.json?limit=1&offset=$offset&client_id=$clientID")
+    artistpage=$(CURL "https://api.soundcloud.com/e1/users/$artistID/sounds.json?limit=1&offset=$offset&client_id=$clientID")
+    #echo "$artistpage" | json_pp -f json -t json
     
     log 4 "REALNAME: $realname"
 
@@ -388,8 +389,8 @@ function get_arg() { # Parse arguments
 }
 
 function config() { # Check for the path where download music
-    if [ -f "/$HOME/.scdl.cfg" ]; then
-        source "/$HOME/.scdl.cfg"
+    if [ -f "scdl.cfg" ]; then
+        source "scdl.cfg"
     else
         log 1 "The config file does not exist..."
         log 1 "Please run the Installer first or add the sample config file"
